@@ -1,3 +1,4 @@
+import { OrbitControls } from "@react-three/drei"
 import { useState } from "react";
 const Scene = () => {
   const [active, setActive] = useState(false);
@@ -6,12 +7,13 @@ setActive(!active);
   };
   return (
     <>
+    <OrbitControls />
       <mesh onClick={clickHandler} position-x={1}>
         <boxGeometry />
         <meshBasicMaterial color={active? "red" : "blue"} />
       </mesh>
 
-      <mesh position-x={-1}>
+      <mesh onClick={(e)=>{e.stopPropagation()}} position-x={-1}>
         <boxGeometry />
         <meshBasicMaterial color="purple" />
       </mesh>
